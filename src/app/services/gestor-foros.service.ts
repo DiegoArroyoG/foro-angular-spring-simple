@@ -3,11 +3,12 @@ import {newArray} from '@angular/compiler/src/util';
 import {HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
+import {Tema} from '../model/tema';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CargarForosService {
+export class GestorForosService {
   constructor(private http: HttpClient) {
   }
   private handleError(error: HttpErrorResponse): Observable<any> {
@@ -28,8 +29,23 @@ export class CargarForosService {
         catchError(this.handleError)
       );
   }
+  private post<T>(url, data: T): Observable<T> {
+    console.log('post:', url);
+    return this.http
+      .post<T>(url, data, {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'id_usuario': '1'
+        }),
+      })
+      .pipe(catchError(this.handleError));
+  }
   getForos(){
     const url = `http://localhost:8080/`;
     return this.get(url);
+  }
+  agregarTema(tema: Tema, nombre: string){
+    const url = `http://localhost:8080/` + nombre;
+    return this.post(url, tema);
   }
 }

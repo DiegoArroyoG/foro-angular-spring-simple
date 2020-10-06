@@ -1,0 +1,18 @@
+<h1>{{tema.titulo}}</h1>
+<p>{{tema.contenido}}</p>
+<p>{{tema.ranking}}</p>
+<ul>
+  <ng-template #recursiveTable let-list>
+    <ng-container *ngFor="let currentItem of list">
+      <li>
+        <p>{{ currentItem.id }} , {{ currentItem.contenido }}</p>
+      </li>
+      <ng-container *ngIf="currentItem.comentarios?.length > 0">
+        <ul>
+          <ng-container *ngTemplateOutlet="recursiveTable; context:{ $implicit: currentItem.comentarios }"></ng-container>
+        </ul>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+  <ng-container *ngTemplateOutlet="recursiveTable; context:{ $implicit: list}"></ng-container>
+</ul>

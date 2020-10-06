@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {GestorTemasService} from '../../services/gestor-temas.service';
 import {Tema} from '../../model/tema';
 
@@ -12,6 +12,7 @@ export class TemasComponent implements OnInit {
   tema: Tema[] = [];
   constructor(
     private route: ActivatedRoute,
+    public router: Router,
     private temasService: GestorTemasService
   ) { }
 

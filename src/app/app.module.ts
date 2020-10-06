@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { TemasComponent } from './view/temas/temas.component';
 import { CommentsComponent } from './view/comments/comments.component';
 import { CrearTemasComponent } from './view/crear-temas/crear-temas.component';
+import { TemaComponent } from './view/tema/tema.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CrearTemasComponent } from './view/crear-temas/crear-temas.component';
     TemasComponent,
     CommentsComponent,
     CrearTemasComponent,
+    TemaComponent,
   ],
   imports: [
     BrowserModule,

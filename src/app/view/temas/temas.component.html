@@ -1,1 +1,10 @@
-<p>temas works!</p>
+<div>
+
+  <p>{{router.url}}</p>
+  <ul>
+    <li *ngFor="let item of tema">
+      <a [routerLink]="[router.url + '/' +item.id]">{{item.titulo}}</a>
+    </li>
+  </ul>
+</div>
+

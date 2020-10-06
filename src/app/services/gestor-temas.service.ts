@@ -30,4 +30,9 @@ export class GestorTemasService {
     const url = `http://localhost:8080/` + nombre;
     return this.get(url);
   }
+
+  getTema(nombre: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id;
+    return this.get(url);
+  }
 }

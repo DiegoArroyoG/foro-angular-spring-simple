@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {CargarForosService} from '../../services/cargar-foros.service';
+import {GestorForosService} from '../../services/gestor-foros.service';
 import {Foro} from '../../model/foro';
 
 @Component({
@@ -9,7 +9,7 @@ import {Foro} from '../../model/foro';
 })
 export class ForosComponent implements OnInit {
   forosList: Foro[] = [];
-  constructor(public infoForos: CargarForosService) {
+  constructor(public infoForos: GestorForosService) {
   }
   ngOnInit(): void {
     this.getForos();

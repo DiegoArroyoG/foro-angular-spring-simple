@@ -4,7 +4,7 @@ import {Usuario} from './usuario';
 export class Tema {
   id: number;
   usuario: Usuario;
-  comentarios: Comentario[];
+  comentario: Comentario[];
   fechaPublicacion: string;
   titulo: string;
   contenido: string;
