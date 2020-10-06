@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {GestorTemasService} from '../../services/gestor-temas.service';
+import {Tema} from '../../model/tema';
 
 @Component({
   selector: 'app-temas',
@@ -15,14 +17,13 @@ export class TemasComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      let nombre = params['nombre'];
-        this.temasService.getTemas(nombre).subscribe
-          ((tema: Tema[]) => {
-            this.tema = tema;
-      }, error =>{
+      const nombre = params.nombre;
+      this.temasService.getTemas(nombre).subscribe
+      ((tema: Tema[]) => {
+        this.tema = tema;
+      }, error => {
         console.log(error);
       });
-
+    });
   }
-
 }
