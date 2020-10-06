@@ -28,9 +28,8 @@ export class CargarForosService {
         catchError(this.handleError)
       );
   }
-  getForos(): any{
-    const url = '../../assets/test_archives/foros.json';
-    this.get(url).subscribe(value => console.log());
+  getForos(){
+    const url = `http://localhost:8080/`;
     return this.get(url);
   }
 }

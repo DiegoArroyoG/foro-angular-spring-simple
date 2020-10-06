@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {CargarForosService} from '../../services/cargar-foros.service';
 import {Foro} from '../../model/foro';
 
@@ -18,11 +18,9 @@ export class ForosComponent implements OnInit {
   getForos(){
     this.infoForos.getForos().subscribe(
       (forosGet: Foro[]) => {
-        console.log(forosGet);
         this.forosList = forosGet;
       }, error => {
         console.log(error);
-      }
-    );
+    });
   }
 }

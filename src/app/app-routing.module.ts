@@ -2,11 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './view/login/login.component';
 import {ForosComponent} from './view/foros/foros.component';
+import { TemasComponent } from './view/temas/temas.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ForosComponent,
+    children: []
+  },
+  {
+    path: ':nombre',
+    component: TemasComponent,
     children: []
   }
 ];
