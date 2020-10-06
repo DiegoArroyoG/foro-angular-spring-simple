@@ -9,6 +9,9 @@ import { MaterialModule} from './material/material.module';
 import { ForosComponent } from './view/foros/foros.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { TemasComponent } from './view/temas/temas.component';
+import { CommentsComponent } from './view/comments/comments.component';
+import { CrearTemasComponent } from './view/crear-temas/crear-temas.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import {HttpClientModule} from '@angular/common/http';
     MenuComponent,
     LoginComponent,
     ForosComponent,
+    TemasComponent,
+    CommentsComponent,
+    CrearTemasComponent,
   ],
   imports: [
     BrowserModule,

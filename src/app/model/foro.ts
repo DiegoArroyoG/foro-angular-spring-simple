@@ -1,3 +1,5 @@
-interface Foro{
+export class Foro{
   nombre: string;
+  constructor() {
+  }
 }

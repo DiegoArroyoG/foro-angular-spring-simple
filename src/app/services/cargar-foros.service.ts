@@ -8,12 +8,7 @@ import {Observable, throwError} from 'rxjs';
   providedIn: 'root'
 })
 export class CargarForosService {
-  info: any = {};
   constructor(private http: HttpClient) {
-    console.log('Servicio foros corriendo.');
-    http.get('../../assets/test_archives/foros.json').subscribe(resp => {
-      this.info = resp;
-    });
   }
   private handleError(error: HttpErrorResponse): Observable<any> {
     console.log(error);
@@ -35,6 +30,7 @@ export class CargarForosService {
   }
   getForos(): any{
     const url = '../../assets/test_archives/foros.json';
+    this.get(url).subscribe(value => console.log());
     return this.get(url);
   }
 }

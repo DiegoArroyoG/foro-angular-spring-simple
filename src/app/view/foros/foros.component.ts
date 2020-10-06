@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CargarForosService} from '../../services/cargar-foros.service';
+import {Foro} from '../../model/foro';
 
 @Component({
   selector: 'app-foros',
@@ -7,7 +8,7 @@ import {CargarForosService} from '../../services/cargar-foros.service';
   styleUrls: ['./foros.component.css']
 })
 export class ForosComponent implements OnInit {
-  foros = Array<object>();
+  forosList: Foro[] = [];
   constructor(public infoForos: CargarForosService) {
   }
   ngOnInit(): void {
@@ -16,11 +17,11 @@ export class ForosComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getForos(){
     this.infoForos.getForos().subscribe(
-      (forosGet) => {
-        this.foros = [];
-        forosGet.forEach((x) => {
-          this.foros.push(x);
-        }, err => { });
+      (forosGet: Foro[]) => {
+        console.log(forosGet);
+        this.forosList = forosGet;
+      }, error => {
+        console.log(error);
       }
     );
   }
