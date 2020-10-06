@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "proyectoForos"
+  "defaultProject": "proyectoForos",
+  "cli": {
+    "analytics": "4e16f811-6bc9-412b-8e93-52e80561956c"
+  }
 }

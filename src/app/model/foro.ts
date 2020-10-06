@@ -1,0 +1,3 @@
+interface Foro{
+  nombre: string;
+}
