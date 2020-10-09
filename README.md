@@ -1,3 +1,7 @@
+#MENSAJE PARA PAVLICH
+
+EL BACK LO DESARROLLAMOS EN OTRO REPO POR SI GUSTA VER https://minerva.javeriana.edu.co/arroyodiego/proyecto-1-backend/
+
 # ProyectoForos
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
