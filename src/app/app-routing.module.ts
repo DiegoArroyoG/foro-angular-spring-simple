@@ -8,6 +8,11 @@ import {CrearTemasComponent} from './view/crear-temas/crear-temas.component';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent,
+    children: []
+  },
+  {
     path: '',
     component: ForosComponent,
     children: []
@@ -23,7 +28,7 @@ const routes: Routes = [
     children: []
   },
   {
-    path: ':nombre/crearTema',
+    path: ':nombre/crear/tema',
     component: CrearTemasComponent,
     children: []
   }

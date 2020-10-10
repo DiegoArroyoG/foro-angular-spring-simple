@@ -1,14 +1,8 @@
-<mat-form-field appearance="fill">
-  <mat-label>Enter your email</mat-label>
-  <input matInput placeholder="pat@example.com" [formControl]="email" required>
-  <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-</mat-form-field>
-
-<mat-form-field appearance="fill">
-  <mat-label>Enter your password</mat-label>
-  <input matInput [type]="hide ? 'password' : 'text'">
-  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-  </button>
-</mat-form-field>
-<button mat-raised-button color="primary">Ingresar</button>
+<div>
+  <form (ngSubmit)="doLogin()">
+  <input type="text" [(ngModel)]="user" name="user">
+  <input type="text" [(ngModel)]="password" name="pass">
+  <button type="submit" id="login">Login</button>
+  </form>
+  <button (click)="logout()">logout</button>
+</div>

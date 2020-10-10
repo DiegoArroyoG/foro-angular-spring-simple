@@ -16,6 +16,7 @@ export class GestorTemasService {
     console.log('get:', url);
     return this.http
       .get<T>(url, {
+        withCredentials: true,
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           Accept: 'application/json',

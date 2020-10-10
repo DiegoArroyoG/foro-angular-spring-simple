@@ -1,11 +1,21 @@
 <h1>{{tema.titulo}}</h1>
 <p>{{tema.contenido}}</p>
 <p>{{tema.ranking}}</p>
+<mat-form-field appearance="fill">
+  <mat-label>Comentario</mat-label>
+  <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearComentario"></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="comentar()">Agregar</button>
 <ul>
   <ng-template #recursiveTable let-list>
     <ng-container *ngFor="let currentItem of list">
       <li>
         <p>{{ currentItem.id }} , {{ currentItem.contenido }}</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Responder</mat-label>
+          <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearRespuesta"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="responder(currentItem.id)">Agregar</button>
       </li>
       <ng-container *ngIf="currentItem.comentarios?.length > 0">
         <ul>

@@ -1,6 +1,9 @@
 <div>
 
   <p>{{router.url}}</p>
+  <a [routerLink]="[router.url + '/crear/tema']">
+    <button mat-raised-button color="primary">Crear tema</button>
+  </a>
   <ul>
     <li *ngFor="let item of tema">
       <a [routerLink]="[router.url + '/' +item.id]">{{item.titulo}}</a>
