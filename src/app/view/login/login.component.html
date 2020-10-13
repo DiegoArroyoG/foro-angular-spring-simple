@@ -1,8 +1,29 @@
-<div>
-  <form (ngSubmit)="doLogin()">
-  <input type="text" [(ngModel)]="user" name="user">
-  <input type="text" [(ngModel)]="password" name="pass">
-  <button type="submit" id="login">Login</button>
-  </form>
-  <button (click)="logout()">logout</button>
+<div id="login-div">
+  <mat-card>
+    <mat-card-content>
+      <div [hidden]="authService.userStatus">
+        <form (ngSubmit)="doLogin()">
+          <mat-form-field appearance="fill">
+            <mat-label>Ingrese el usuario.</mat-label>
+            <input matInput placeholder="Usuario" type="text" [(ngModel)]="user" name="user">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa la contraseña.</mat-label>
+            <input matInput [type]="hidePass ? 'password' : 'text'" [(ngModel)]="password" name="pass">
+            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+              <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <button type="submit" id="login">Login</button>
+        </form>
+        <button (click)="logout()">logout</button>
+      </div>
+      <div [hidden]="!authService.userStatus">
+        <h1>{{authService.userName}}</h1>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>

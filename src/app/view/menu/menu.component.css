@@ -1,5 +1,8 @@
 #menu_bar{
   width: 100%;
-  height: 48px;
+  height: 60px;
   background-color: darkolivegreen;
+}
+#logo{
+  max-width: 40px;
 }

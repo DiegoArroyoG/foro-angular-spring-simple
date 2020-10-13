@@ -9,12 +9,12 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
   user: string = '';
   password: string = '';
-
+  hidePass = true;
   result: any;
 
   message: any;
 
-  constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit() {}
 

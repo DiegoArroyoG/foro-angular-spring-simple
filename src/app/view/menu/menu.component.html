@@ -1,3 +1,5 @@
 <div id="menu_bar">
-  <img src="" alt="Logo del rincon de lo morbido.">
+  <img src="../../../assets/logo/logo.png" alt="Logo del rincon de lo morbido." id="logo">
+  <button mat-stroked-button [hidden]="!auth.userStatus" routerLink="login">Login</button>
+  <p [hidden]="auth.userStatus">{{auth.userName}}</p>
 </div>

@@ -1,7 +1,15 @@
 <div>
   <ul>
     <li *ngFor="let item of forosList">
-      <a [routerLink]="['/', item.nombre]">{{item.nombre}}</a>
+      <mat-card class="foros-card">
+        <mat-card-header>
+          <mat-card-title>{{item.nombre}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{'../../../assets/forosImg/'+item.nombre+'.jpg'}}" alt="Photo of a Shiba Inu">
+        <mat-card-actions>
+          <button mat-button [routerLink]="['/', item.nombre]" color="primary">Ver mas.</button>
+        </mat-card-actions>
+      </mat-card>
     </li>
   </ul>
 </div>
