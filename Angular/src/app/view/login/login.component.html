@@ -1,0 +1,29 @@
+<div id="login-div">
+  <mat-card>
+    <mat-card-content>
+      <div *ngIf="!session">
+        <form (ngSubmit)="doLogin()">
+          <mat-form-field appearance="fill">
+            <mat-label>Ingrese el usuario.</mat-label>
+            <input matInput placeholder="Usuario" type="text" [(ngModel)]="user" name="user">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa la contraseña.</mat-label>
+            <input matInput [type]="hidePass ? 'password' : 'text'" [(ngModel)]="password" name="pass">
+            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+              <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+          <button mat-stroked-button color="primary" type="submit" id="login">Login</button>
+        </form>
+
+      </div>
+      <div *ngIf="session">
+        <h1>{{this.user}}</h1>
+        <button mat-stroked-button color="primary" (click)="logout()">logout</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

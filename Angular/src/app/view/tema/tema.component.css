@@ -1,0 +1,17 @@
+.tema-card, #comentarios{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+.comment-box{
+  width: 60%;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+}
+ul{
+  list-style: none;
+}
+#contenidoCrearComentario, #contenidoCrearRespuesta{
+  width: 80%;
+}

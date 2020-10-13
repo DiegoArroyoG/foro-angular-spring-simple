@@ -1,0 +1,58 @@
+<mat-card class="tema-card">
+  <mat-card-header>
+    <mat-card-title>{{tema.titulo}}</mat-card-title>
+    <mat-card-subtitle>{{tema.fechaPublicacion}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{tema.contenido}}
+    </p>
+    <p>Ranking: {{tema.ranking}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="votoNegativo()">-1</button>
+    <button mat-button (click)="votoPositivo()">+1</button>
+  </mat-card-actions>
+</mat-card>
+<div class="comment-box" id="comentarios">
+  <h2>Comentarios</h2>
+  <h3>Agregar Comentario</h3>
+  <mat-form-field appearance="fill">
+    <mat-label>Agregar Comentario</mat-label>
+    <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearComentario"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="comentar()">Agregar</button>
+  <ul>
+    <h3>Comentarios</h3>
+    <ng-template #recursiveTable let-list>
+      <ng-container *ngFor="let currentItem of list">
+        <li>
+          <mat-card class="tema-card" [ngStyle]="{'backgroundColor':currentItem.aprobado? 'green':'red'}">
+            <mat-card-header>
+              <mat-card-title><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></mat-card-title>
+              <mat-card-subtitle>{{currentItem.fecha}}</mat-card-subtitle>
+            </mat-card-header>
+            <p>Ranking: {{currentItem.ranking.toString()}}</p>
+            <button mat-button (click)="puntuarNegativo(currentItem.id)">-1</button>
+            <button mat-button (click)="puntuarPositivo(currentItem.id)">+1</button>
+            <mat-form-field appearance="fill">
+              <mat-label>Responder</mat-label>
+              <textarea matInput [(ngModel)]="respuestas[currentItem.id]" id="respuesta+{{currentItem.id}}"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="responder(currentItem.id)">Agregar</button>
+            <div id="verificacion" *ngIf="!currentItem.aprobado">
+              <button mat-raised-button color="primary" (click)="verificar(currentItem.id)">Aceptar</button>
+              <button mat-raised-button color="warn" (click)="denegar(currentItem.id)">Denegar</button>
+            </div>
+          </mat-card>
+        </li>
+        <ng-container *ngIf="currentItem.comentarios?.length > 0">
+          <ul>
+            <ng-container *ngTemplateOutlet="recursiveTable; context:{ $implicit: currentItem.comentarios }"></ng-container>
+          </ul>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="recursiveTable; context:{ $implicit: list}"></ng-container>
+  </ul>
+</div>
