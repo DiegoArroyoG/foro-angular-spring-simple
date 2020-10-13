@@ -7,14 +7,29 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  userStatus: boolean;
-  username: string;
+  user = '';
+  session: boolean;
   constructor(public auth: AuthService) {
-    this.userStatus = this.auth.userStatus;
-    this.username = this.auth.userName;
   }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('user') === null){
+      this.session = false;
+    }
+    else{
+      this.session = true;
+      this.user = sessionStorage.getItem('user');
+    }
+  }
+  logout() {
+    this.auth.logout().subscribe(data => {
+      sessionStorage.clear();
+      this.session = false;
+      this.user = '';
+      window.location.reload();
+    }, error => {
+      console.error(error);
+    });
   }
 
 }

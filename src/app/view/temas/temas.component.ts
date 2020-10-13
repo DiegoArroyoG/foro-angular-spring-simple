@@ -28,14 +28,18 @@ export class TemasComponent implements OnInit {
       });
     });
   }
-  verificar(id: string): void{
+
+  verificar(id: number): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
-      if(this.aprobado){
-        this.temasService.aprobar(nombre, id).subscribe();
-      }else{
-        this.temasService.desaprobar(nombre, id).subscribe();
-      }
+      this.temasService.aprobar(nombre, id.toString()).subscribe();
+    });
+  }
+
+  denegar(id: number): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      this.temasService.desaprobar(nombre, id.toString()).subscribe();
     });
   }
 }

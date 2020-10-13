@@ -13,7 +13,7 @@ export class GestorTemasService {
     return throwError('An error has occurred');
   }
   private put<T>(url, data: T): Observable<T> {
-    console.log('post:', url);
+    console.log('put:', url);
     return this.http
       .put<T>(url, data, {
         withCredentials: true,
@@ -54,7 +54,7 @@ export class GestorTemasService {
   }
 
   desaprobar(nombre: string, id: string) {
-    const url = `http://localhost:8080/` + nombre + '/' + id + "/desarpobar";
+    const url = `http://localhost:8080/` + nombre + '/' + id + "/desaprobar";
     return this.put(url,{});
   }
 

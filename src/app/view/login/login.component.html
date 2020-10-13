@@ -1,7 +1,7 @@
 <div id="login-div">
   <mat-card>
     <mat-card-content>
-      <div [hidden]="authService.userStatus">
+      <div *ngIf="!session">
         <form (ngSubmit)="doLogin()">
           <mat-form-field appearance="fill">
             <mat-label>Ingrese el usuario.</mat-label>
@@ -17,10 +17,11 @@
           </mat-form-field>
           <button mat-stroked-button color="primary" type="submit" id="login">Login</button>
         </form>
-        <button mat-stroked-button color="primary" (click)="logout()">logout</button>
+
       </div>
-      <div [hidden]="!authService.userStatus">
-        <h1>{{authService.userName}}</h1>
+      <div *ngIf="session">
+        <h1>{{this.user}}</h1>
+        <button mat-stroked-button color="primary" (click)="logout()">logout</button>
       </div>
     </mat-card-content>
   </mat-card>

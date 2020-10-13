@@ -1,5 +1,6 @@
 <div id="menu_bar">
   <a routerLink="/"><img src="../../../assets/logo/logo.png" alt="Logo del rincon de lo morbido." id="logo"></a>
-  <button mat-stroked-button [hidden]="!auth.userStatus" routerLink="login">Login</button>
-  <p [hidden]="auth.userStatus">{{auth.userName}}</p>
+  <button mat-stroked-button *ngIf="!session" routerLink="login">Login</button>
+  <p *ngIf="session">{{this.user}}</p>
+  <button mat-stroked-button *ngIf="session" (click)="logout()" routerLink="login">Logout</button>
 </div>

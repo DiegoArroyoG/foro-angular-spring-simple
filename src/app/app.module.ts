@@ -11,7 +11,6 @@ import { ForosComponent } from './view/foros/foros.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { TemasComponent } from './view/temas/temas.component';
-import { CommentsComponent } from './view/comments/comments.component';
 import { CrearTemasComponent } from './view/crear-temas/crear-temas.component';
 import { TemaComponent } from './view/tema/tema.component';
 import { PresentationViewComponent } from './view/presentation-view/presentation-view.component';
@@ -24,7 +23,6 @@ import { ModerarComponent } from './view/moderar/moderar.component';
     LoginComponent,
     ForosComponent,
     TemasComponent,
-    CommentsComponent,
     CrearTemasComponent,
     TemaComponent,
     PresentationViewComponent,

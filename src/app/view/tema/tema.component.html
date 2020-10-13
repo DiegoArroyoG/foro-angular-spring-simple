@@ -28,16 +28,22 @@
       <ng-container *ngFor="let currentItem of list">
         <li>
           <mat-card class="tema-card" [ngStyle]="{'backgroundColor':currentItem.aprobado? 'green':'red'}">
-            <p><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></p>
+            <mat-card-header>
+              <mat-card-title><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></mat-card-title>
+              <mat-card-subtitle>{{currentItem.fecha}}</mat-card-subtitle>
+            </mat-card-header>
             <p>Ranking: {{currentItem.ranking.toString()}}</p>
             <button mat-button (click)="puntuarNegativo(currentItem.id)">-1</button>
             <button mat-button (click)="puntuarPositivo(currentItem.id)">+1</button>
             <mat-form-field appearance="fill">
               <mat-label>Responder</mat-label>
-              <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearRespuesta"></textarea>
+              <textarea matInput [(ngModel)]="respuestas[currentItem.id]" id="respuesta+{{currentItem.id}}"></textarea>
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="responder(currentItem.id)">Agregar</button>
-            <mat-slide-toggle *ngIf="!currentItem.aprobado" [(ngModel)]="aprobado" (change)="verificar(currentItem.id)">Verificar</mat-slide-toggle>
+            <div id="verificacion" *ngIf="!currentItem.aprobado">
+              <button mat-raised-button color="primary" (click)="verificar(currentItem.id)">Aceptar</button>
+              <button mat-raised-button color="warn" (click)="denegar(currentItem.id)">Denegar</button>
+            </div>
           </mat-card>
         </li>
         <ng-container *ngIf="currentItem.comentarios?.length > 0">

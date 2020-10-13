@@ -13,8 +13,9 @@ import { GestorComentariosService } from 'src/app/services/gestor-comentarios.se
 export class TemaComponent implements OnInit {
   tema: Tema;
   comentario: Comentario = new Comentario();
+  comentarioRespuesta: Comentario = new Comentario();
   list = [];
-  aprobado: boolean = false;
+  respuestas: string[] = [];
   constructor(private route: ActivatedRoute,
               private router: Router,
               private temasService: GestorTemasService,
@@ -41,49 +42,66 @@ export class TemaComponent implements OnInit {
     });
   }
   responder(id_comentario: string): void {
+    this.comentarioRespuesta.contenido = this.respuestas[id_comentario];
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id = params.id_tema;
-      this.comenatriosService.responder(nombre, id, id_comentario, this.comentario).subscribe();
+      this.comenatriosService.responder(nombre, id, id_comentario, this.comentarioRespuesta).subscribe();
     });
   }
   puntuarPositivo(id_comentario: string): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id = params.id_tema;
-      this.comenatriosService.puntuar(true, nombre, id, id_comentario).subscribe();
+      this.comenatriosService.puntuar(true, nombre, id, id_comentario).subscribe(
+        params2 => {
+          window.location.reload();
+        }
+      );
     });
   }
   puntuarNegativo(id_comentario: string): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id = params.id_tema;
-      this.comenatriosService.puntuar(false, nombre, id, id_comentario).subscribe();
+      this.comenatriosService.puntuar(false, nombre, id, id_comentario).subscribe(
+        params2 => {
+          window.location.reload();
+        }
+      );
     });
   }
   votoPositivo(): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id = params.id_tema;
-      this.temasService.votoPositivo(nombre, id).subscribe();
+      this.temasService.votoPositivo(nombre, id).subscribe(params2 => {
+          window.location.reload();
+        }
+      );
     });
   }
   votoNegativo(): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id = params.id_tema;
-      this.temasService.votoNegativo(nombre, id).subscribe();
+      this.temasService.votoNegativo(nombre, id).subscribe(params2 => {
+        window.location.reload();
+      });
     });
   }
   verificar(id: string): void{
     this.route.params.subscribe(params => {
       const nombre = params.nombre;
       const id_tema = params.id_tema;
-      if(this.aprobado){
-        this.comenatriosService.aprobar(nombre, id_tema, id).subscribe();
-      }else{
-        this.comenatriosService.desaprobar(nombre, id_tema, id).subscribe();
-      }
+      this.comenatriosService.aprobar(nombre, id_tema, id).subscribe();
+    });
+  }
+  denegar(id: string): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id_tema = params.id_tema;
+      this.comenatriosService.desaprobar(nombre, id_tema, id).subscribe();
     });
   }
 }

@@ -6,3 +6,6 @@
 #logo{
   max-width: 40px;
 }
+p{
+  display: inline-block;
+}
