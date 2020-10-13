@@ -12,6 +12,17 @@ export class GestorTemasService {
     console.log(error);
     return throwError('An error has occurred');
   }
+  private put<T>(url, data: T): Observable<T> {
+    console.log('post:', url);
+    return this.http
+      .put<T>(url, data, {
+        withCredentials: true,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      })
+      .pipe(catchError(this.handleError));
+  }
   private get<T>(url): Observable<T> {
     console.log('get:', url);
     return this.http
@@ -35,5 +46,25 @@ export class GestorTemasService {
   getTema(nombre: string, id: string) {
     const url = `http://localhost:8080/` + nombre + '/' + id;
     return this.get(url);
+  }
+
+  aprobar(nombre: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id + "/aprobar";
+    return this.put(url,{});
+  }
+
+  desaprobar(nombre: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id + "/desarpobar";
+    return this.put(url,{});
+  }
+
+  votoPositivo(nombre: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id + "/positivo";
+    return this.put(url,{});
+  }
+
+  votoNegativo(nombre: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id + "/negativo";
+    return this.put(url,{});
   }
 }

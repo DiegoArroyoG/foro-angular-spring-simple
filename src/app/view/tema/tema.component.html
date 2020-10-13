@@ -10,8 +10,8 @@
     <p>Ranking: {{tema.ranking}}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>-1</button>
-    <button mat-button>+1</button>
+    <button mat-button (click)="votoNegativo()">-1</button>
+    <button mat-button (click)="votoPositivo()">+1</button>
   </mat-card-actions>
 </mat-card>
 <div class="comment-box" id="comentarios">
@@ -27,15 +27,18 @@
     <ng-template #recursiveTable let-list>
       <ng-container *ngFor="let currentItem of list">
         <li>
-          <p><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></p>
-          <p>Ranking: {{currentItem.ranking.toString()}}</p>
-          <button mat-button (click)="puntuarNegativo(currentItem.id)">-1</button>
-          <button mat-button (click)="puntuarPositivo(currentItem.id)">+1</button>
-          <mat-form-field appearance="fill">
-            <mat-label>Responder</mat-label>
-            <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearRespuesta"></textarea>
-          </mat-form-field>
-          <button mat-raised-button color="primary" (click)="responder(currentItem.id)">Agregar</button>
+          <mat-card class="tema-card" [ngStyle]="{'backgroundColor':currentItem.aprobado? 'green':'red'}">
+            <p><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></p>
+            <p>Ranking: {{currentItem.ranking.toString()}}</p>
+            <button mat-button (click)="puntuarNegativo(currentItem.id)">-1</button>
+            <button mat-button (click)="puntuarPositivo(currentItem.id)">+1</button>
+            <mat-form-field appearance="fill">
+              <mat-label>Responder</mat-label>
+              <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearRespuesta"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="responder(currentItem.id)">Agregar</button>
+            <mat-slide-toggle *ngIf="!currentItem.aprobado" [(ngModel)]="aprobado" (change)="verificar(currentItem.id)">Verificar</mat-slide-toggle>
+          </mat-card>
         </li>
         <ng-container *ngIf="currentItem.comentarios?.length > 0">
           <ul>

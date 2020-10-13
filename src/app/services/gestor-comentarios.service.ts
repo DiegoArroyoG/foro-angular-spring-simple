@@ -25,10 +25,10 @@ export class GestorComentariosService {
       })
       .pipe(catchError(this.handleError));
   }
-  private put<T>(url): Observable<T> {
-    console.log('put:', url);
+  private put<T>(url, data: T): Observable<T> {
+    console.log('post:', url);
     return this.http
-      .put<T>(url, {
+      .put<T>(url, data, {
         withCredentials: true,
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export class GestorComentariosService {
       url = url + '/negativo';
     }
     console.log('Url->' + url);
-    return this.put(url);
+    return this.put(url, {});
   }
   comentar(nombre_foro: string, id_tema: string, comentario: Comentario){
     const url = `http://localhost:8080/` + nombre_foro + '/' + id_tema;
@@ -55,5 +55,14 @@ export class GestorComentariosService {
   responder(nombre_foro: any, id_tema: any, id_comentario: string, comentario: Comentario) {
     const url = `http://localhost:8080/` + nombre_foro + '/' + id_tema + '/' + id_comentario;
     return this.post(url, comentario);
+  }
+  aprobar(nombre: string, id_tema: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id_tema + '/' + id + "/aprobar";
+    return this.put(url,{});
+  }
+
+  desaprobar(nombre: string, id_tema: string, id: string) {
+    const url = `http://localhost:8080/` + nombre + '/' + id_tema + '/' + id + "/desarpobar";
+    return this.put(url,{});
   }
 }

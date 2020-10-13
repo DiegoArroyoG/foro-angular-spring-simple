@@ -14,6 +14,7 @@ export class TemaComponent implements OnInit {
   tema: Tema;
   comentario: Comentario = new Comentario();
   list = [];
+  aprobado: boolean = false;
   constructor(private route: ActivatedRoute,
               private router: Router,
               private temasService: GestorTemasService,
@@ -58,6 +59,31 @@ export class TemaComponent implements OnInit {
       const nombre = params.nombre;
       const id = params.id_tema;
       this.comenatriosService.puntuar(false, nombre, id, id_comentario).subscribe();
+    });
+  }
+  votoPositivo(): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id = params.id_tema;
+      this.temasService.votoPositivo(nombre, id).subscribe();
+    });
+  }
+  votoNegativo(): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id = params.id_tema;
+      this.temasService.votoNegativo(nombre, id).subscribe();
+    });
+  }
+  verificar(id: string): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id_tema = params.id_tema;
+      if(this.aprobado){
+        this.comenatriosService.aprobar(nombre, id_tema, id).subscribe();
+      }else{
+        this.comenatriosService.desaprobar(nombre, id_tema, id).subscribe();
+      }
     });
   }
 }

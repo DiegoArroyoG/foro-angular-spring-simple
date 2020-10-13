@@ -10,6 +10,7 @@ import {Tema} from '../../model/tema';
 })
 export class TemasComponent implements OnInit {
   tema: Tema[] = [];
+  aprobado: boolean = false;
   constructor(
     private route: ActivatedRoute,
     public router: Router,
@@ -25,6 +26,16 @@ export class TemasComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+    });
+  }
+  verificar(id: string): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      if(this.aprobado){
+        this.temasService.aprobar(nombre, id).subscribe();
+      }else{
+        this.temasService.desaprobar(nombre, id).subscribe();
+      }
     });
   }
 }

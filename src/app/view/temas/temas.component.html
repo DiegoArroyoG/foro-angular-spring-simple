@@ -17,7 +17,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button [routerLink]="[router.url + '/' + item.id]" color="accent">Ver mas</button>
-          <mat-slide-toggle *ngIf="item.aprobado">Verificar</mat-slide-toggle>
+          <mat-slide-toggle *ngIf="!item.aprobado" [(ngModel)]="aprobado" (change)="verificar(item.id)">Verificar</mat-slide-toggle>
         </mat-card-actions>
       </mat-card>
       <mat-divider></mat-divider>
