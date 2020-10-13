@@ -25,12 +25,35 @@ export class GestorComentariosService {
       })
       .pipe(catchError(this.handleError));
   }
+  private put<T>(url): Observable<T> {
+    console.log('put:', url);
+    return this.http
+      .put<T>(url, {
+        withCredentials: true,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      })
+      .pipe(catchError(this.handleError));
+  }
+  puntuar(tipo: boolean, nombre_foro: any, id_tema: any, id_comentario: string){
+    let url;
+    url = 'http://localhost:8080/' + nombre_foro + '/' + id_tema + '/' + id_comentario;
+    if (tipo === true){
+        url = url + '/positivo';
+    }
+    else{
+      url = url + '/negativo';
+    }
+    console.log('Url->' + url);
+    return this.put(url);
+  }
   comentar(nombre_foro: string, id_tema: string, comentario: Comentario){
-    const url = `http://localhost:8080/` + nombre_foro + "/" + id_tema;
+    const url = `http://localhost:8080/` + nombre_foro + '/' + id_tema;
     return this.post(url, comentario);
   }
   responder(nombre_foro: any, id_tema: any, id_comentario: string, comentario: Comentario) {
-    const url = `http://localhost:8080/` + nombre_foro + "/" + id_tema + "/" + id_comentario;
+    const url = `http://localhost:8080/` + nombre_foro + '/' + id_tema + '/' + id_comentario;
     return this.post(url, comentario);
   }
 }

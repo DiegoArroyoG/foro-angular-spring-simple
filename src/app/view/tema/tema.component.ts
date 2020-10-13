@@ -46,4 +46,18 @@ export class TemaComponent implements OnInit {
       this.comenatriosService.responder(nombre, id, id_comentario, this.comentario).subscribe();
     });
   }
+  puntuarPositivo(id_comentario: string): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id = params.id_tema;
+      this.comenatriosService.puntuar(true, nombre, id, id_comentario).subscribe();
+    });
+  }
+  puntuarNegativo(id_comentario: string): void{
+    this.route.params.subscribe(params => {
+      const nombre = params.nombre;
+      const id = params.id_tema;
+      this.comenatriosService.puntuar(false, nombre, id, id_comentario).subscribe();
+    });
+  }
 }

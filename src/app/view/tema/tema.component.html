@@ -28,6 +28,9 @@
       <ng-container *ngFor="let currentItem of list">
         <li>
           <p><b>{{ currentItem.usuario.username}}: {{ currentItem.contenido}}</b></p>
+          <p>Ranking: {{currentItem.ranking.toString()}}</p>
+          <button mat-button (click)="puntuarNegativo(currentItem.id)">-1</button>
+          <button mat-button (click)="puntuarPositivo(currentItem.id)">+1</button>
           <mat-form-field appearance="fill">
             <mat-label>Responder</mat-label>
             <textarea matInput [(ngModel)]="comentario.contenido" id="contenidoCrearRespuesta"></textarea>
