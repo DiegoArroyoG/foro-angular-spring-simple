@@ -1,0 +1,21 @@
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Agregar Foro (Solo administradores pueden hacer uso)</mat-label>
+    <textarea matInput [(ngModel)]="foro.nombre" id="crearForo"></textarea>
+    <mat-slide-toggle [(ngModel)]="foro.moderado">Moderado</mat-slide-toggle>
+    <button mat-raised-button color="primary" (click)="crearForo()">Crear</button>
+  </mat-form-field>
+  <ul>
+    <li *ngFor="let item of forosList">
+      <mat-card class="foros-card">
+        <mat-card-header>
+          <mat-card-title>{{item.nombre}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{'../../../assets/forosImg/'+item.nombre+'.jpg'}}" alt="Photo of a Shiba Inu">
+        <mat-card-actions>
+          <button mat-button [routerLink]="['/', item.nombre]" color="primary">Ver mas.</button>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul>
+</div>

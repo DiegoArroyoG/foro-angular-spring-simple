@@ -1,0 +1,5 @@
+insert into foro (nombre, moderado) values ('Fantasmas', false)
+insert into foro (nombre, moderado) values ('Ovnis', false)
+insert into foro (nombre, moderado) values ('Exorcismos', true)
+insert into usuario (username) values ('admin')
+insert into usuario (username) values ('user')

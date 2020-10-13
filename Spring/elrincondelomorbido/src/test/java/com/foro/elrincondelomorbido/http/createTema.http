@@ -1,0 +1,14 @@
+POST /Fantasmas HTTP/1.1
+Host: localhost:8080
+id_usuario: 1
+Content-Type: application/json
+
+{
+    "id": null,
+    "comentario": [],
+    "fechaPublicacion": null,
+    "titulo": "toy poseido",
+    "contenido": "tengo miedo ayuda",
+    "rankin": 0,
+    "aprobado": true
+}

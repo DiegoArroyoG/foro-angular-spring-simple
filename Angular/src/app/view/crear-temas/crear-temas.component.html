@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+  <mat-label>Titulo</mat-label>
+  <input matInput [(ngModel)]="tema.titulo" id="tituloCrearTema">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Contenido</mat-label>
+  <textarea matInput [(ngModel)]="tema.contenido" id="contenidoCrearTema"></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="agregarTema()" routerLink=nombre>Agregar</button>
