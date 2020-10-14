@@ -5,6 +5,7 @@ EL BACK LO DESARROLLAMOS EN OTRO REPO POR SI GUSTA VER https://minerva.javeriana
 # ProyectoForos
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+La idea es realizar una pagina que permita agregar temas de conversacion a distintos foros. En nuestro caso, el contexto de la pagina seran sucesos paranormales, experiencia aterradoras e indescriptibles de los usuarios.
 
 ## Development server
 
