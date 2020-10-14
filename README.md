@@ -2,6 +2,10 @@
 
 EL BACK LO DESARROLLAMOS EN OTRO REPO POR SI GUSTA VER https://minerva.javeriana.edu.co/arroyodiego/proyecto-1-backend/
 
+#VIDEO DE DEMOSTRACION
+
+El video de demostracion podra verlo en el siguiente link -> https://www.youtube.com/watch?v=YfTmAe6SJs0
+
 # ProyectoForos
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
